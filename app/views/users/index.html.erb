@@ -1,7 +1,10 @@
 <h1>All Okey!</h1>
-<%=link_to "show you task", user_path(@user)%>
+<%=link_to "show you task", users_path(@user)%>
 <br>
 <%= link_to "Admin Dashboard", admin_index_path%>
+<%= link_to "Admin Dashboard", admin_check_path%>
+
+
 <br>
 <%if can? :create, Task%>
 <%=link_to "New Task", new_task_path%>

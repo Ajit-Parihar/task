@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authenticate_admin!
     def index
         @tasks = Task.all
         @user = current_user

@@ -23,14 +23,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users
-  resources :admins
   resources :taskinfos
+  resources :admins
+
 
   get '/all/users/:id', to: 'users#showuser', as: 'show_user'
   get "user/:task_id/assign/:user_id", to: "users#assign", as: 'assign_user'
   get "task/details/:id", to: "users#taskdetails", as: "task_details"
   get "assign/task/:id", to: "tasks#assigntask", as: 'assign_task'
-
+  get "check/admin", to: "admin#checkadmin", as:"admin_check"
+  post "admin/match", to: "admin#match", as: "admin_match"
   root "users#index"
   resources :tasks do
     member do

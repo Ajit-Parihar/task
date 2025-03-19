@@ -1,17 +1,20 @@
 class AdminController < ApplicationController
   def index
-      
-  end
-
-  def new
+     @admin = current_admin
   end
 
   def edit
   end
+   
+  def new
+    @admin = ActionDispatch::Http::MimeNegotiation::BROWSER_LIKE_ACCEPTS.new
+  end
 
   def create
+
   end
 
   def destroy
   end
+
 end

@@ -1,0 +1,8 @@
+<h1>show</h1>
+<% @tasks.each do |task| %>
+<%unless task.user_id.present?%>
+<%= link_to task.title, task_path(task) %>
+<br>
+<%=link_to "assign Task",show_user_path(task)%>
+ <%end%>
+<%end%>

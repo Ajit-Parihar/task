@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get "admin/index"
+  get "admin/index", as: 'admin_index'
   get "admin/new"
   get "admin/edit"
   get "admin/destroy"
   devise_for :admins
-
 
   devise_for :users, controllers: {
     sessions: "users/sessions"
@@ -25,4 +24,17 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   resources :admins
+  resources :taskinfos
+
+  get '/all/users/:id', to: 'users#showuser', as: 'show_user'
+  get "user/:task_id/assign/:user_id", to: "users#assign", as: 'assign_user'
+  get "task/details/:id", to: "users#taskdetails", as: "task_details"
+  get "assign/task/:id", to: "tasks#assigntask", as: 'assign_task'
+
+  root "users#index"
+  resources :tasks do
+    member do
+      patch :start
+    end
+  end
 end

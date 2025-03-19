@@ -1,0 +1,7 @@
+<%=flash[:notice]%>
+<h1>all users</h1>
+ 
+<%@users.each do |user|%>
+<%=link_to user.first_name, assign_user_path(@task,user)%>
+
+<%end%>

@@ -1,6 +1,22 @@
-<%=@taskInfo.assignTo%>
-<br>
-<%=@taskInfo.complete%>
-<br>
-<%=@taskInfo.due_date.strftime("%Y-%m-%d")%>
 
+
+<div class="task-info-container">
+  <h2>Task Information</h2>
+
+  <p class="task-details">
+    <strong>Assigned To:</strong> <%= @taskInfo.assignTo %>
+  </p>
+
+  <p class="task-details task-status <%= @taskInfo.complete ? '' : 'incomplete' %>">
+    <strong>Status:</strong> <%= @taskInfo.complete ? "Completed" : "Incomplete" %>
+  </p>
+
+  <p class="task-details task-due-date">
+    <strong>Due Date:</strong> <%= @taskInfo.due_date.strftime("%Y-%m-%d") %>
+  </p>
+
+   
+  <p class="task-details">
+  <%=link_to "delete", admin_tasks_delete_path(@task)%>
+  </p>
+</div>

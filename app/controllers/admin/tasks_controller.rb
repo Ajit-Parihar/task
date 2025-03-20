@@ -1,7 +1,7 @@
-class TasksController < ApplicationController
+class Admin::TasksController < ApplicationController
   
-  before_action :set_task, only: [:show, :start]
-
+  # before_action :set_task, only: [:show, :start]
+  before_action :authenticate_admin!
 
   def start
     @task.start_task
@@ -10,6 +10,7 @@ class TasksController < ApplicationController
 
   def index
   end
+
   def new
     @task = Task.new
   end
@@ -18,7 +19,7 @@ class TasksController < ApplicationController
     @task = current_admin.tasks.new(task_params)
     if @task.save
 
-      redirect_to admin_index_path, notice: "task create succssfully"
+      redirect_to admin_root_path, notice: "task create succssfully"
     else
       puts @task.errors.full_messages
        render :new, notice: "some error please try again"
@@ -26,6 +27,7 @@ class TasksController < ApplicationController
   end
   
   def show
+    puts "all okey show"
        @tasks = current_admin.tasks
   end
 
@@ -37,6 +39,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
+      @task = Task.find(params[:id])
+      @taskInfo = TaskInfo.find_by(task_id: @task.id)
+      @taskInfo.destroy
+      @task.destroy
+      redirect_to admin_assign_task_path, notice: "delete task"
   end
 
   private
@@ -45,12 +52,8 @@ class TasksController < ApplicationController
       params.require(:task).permit(:title)
   end
 
-
-  
-
   def set_task
     @task = Task.find(params[:id])
   end
-
 
 end

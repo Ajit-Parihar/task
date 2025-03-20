@@ -1,0 +1,26 @@
+
+
+<div class="admin-login-container">
+  <h2>Login</h2>
+
+  <% if flash[:notice] %>
+    <p class="flash-message"><%= flash[:notice] %></p>
+  <% end %>
+
+  <%= form_with model: @admin, url: admin_match_path do |f| %>
+    <div>
+      <%= f.label :email %><br>
+      <%= f.email_field :email, class: "input-field" %>
+    </div>
+
+    <div>
+      <%= f.label :password %><br>
+      <%= f.password_field :password, class: "input-field" %>
+    </div>
+
+    <div>
+      <%= f.submit "Login", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>
+

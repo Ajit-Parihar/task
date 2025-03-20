@@ -1,13 +1,11 @@
-<h1>All Okey!</h1>
-<%=link_to "show you task", users_path(@user)%>
-<br>
-<%= link_to "Admin Dashboard", admin_index_path%>
-<%= link_to "Admin Dashboard", admin_check_path%>
 
 
-<br>
-<%if can? :create, Task%>
-<%=link_to "New Task", new_task_path%>
-<%end%>
+<div class="home-container">
+  <div class="home-links">
+    <%= link_to "Show Your Task", user_path(@user), class: "home-link" %>
 
-<%=link_to "sign_in",  new_user_session_path %>
+    <% if can? :create, Task %>
+      <%= link_to "New Task", new_task_path, class: "home-link" %>
+    <% end %>
+  </div>
+</div>

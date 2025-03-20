@@ -1,15 +1,927 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Global Styles for Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #007bff;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    color: #e0e0e0;
+}
+
+/* Flash Messages */
+.notice, .alert {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.notice {
+    background-color: #28a745;
+    color: white;
+}
+
+.alert {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Container for Content */
+.content-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+.home-container {
+    text-align: center;
+    padding: 50px;
+}
+
+.home-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.home-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.home-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.home-links a:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.admin-login-container {
+    width: 350px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.admin-login-container h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.admin-login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-login-container label {
+    font-weight: bold;
+    color: #333;
+}
+
+.admin-login-container input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.admin-login-container input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+}
+
+.admin-login-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.flash-message {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.tasks-container {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.tasks-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-item a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.task-item a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.task-details-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.task-details-container h2 {
+    color: #007bff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.task-info {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.task-info strong {
+    color: #007bff;
+}
+
+.task-due-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d9534f; /* Red for urgency */
+    margin-top: 10px;
+}
+
+.admin-home-container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.admin-home-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.admin-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.admin-links a {
+    display: inline-block;
+    width: 250px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.admin-links a:hover {
+    background-color: #0056b3;
+}
+
+.new-task-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.new-task-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.flash-message {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.task-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+.task-form input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.task-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.unassigned-tasks-container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.unassigned-tasks-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-item a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.task-item a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.assign-task-button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.assign-task-button:hover {
+    background-color: #218838;
+}
+
+.assigned-tasks-container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.assigned-tasks-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-item a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.task-item a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.task-info-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.task-info-container h2 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.task-details {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.task-details strong {
+    color: #007bff;
+}
+
+.task-status {
+    font-weight: bold;
+    color: #28a745; /* Green for completed tasks */
+}
+
+.task-status.incomplete {
+    color: #d9534f; /* Red for incomplete tasks */
+}
+
+.task-due-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d9534f; /* Red for urgency */
+    margin-top: 10px;
+}
+
+
+.all-users-container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.all-users-container h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.user-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-item a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    display: block;
+    padding: 10px;
+}
+
+.user-item a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Flash Message Styling */
+.flash-message {
+    width: 60%;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+}
+
+
+.edit-registration-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-registration-container h2 {
+    color: #007bff;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    font-weight: bold;
+    color: #333;
+}
+
+.field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.field em {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Button Styling */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions input {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions input:hover {
+    background-color: #0056b3;
+}
+
+/* Cancel Account Button */
+.cancel-account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cancel-account button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancel-account button:hover {
+    background-color: #b52b3a;
+}
+
+/* Back Link */
+.back-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.back-link a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+.signup-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signup-container h2 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.field label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.field em {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Button Styling */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions input {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions input:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+.signup-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signup-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+}
+
+.signup-links a:hover {
+    text-decoration: underline;
+}
+
+.login-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.field label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Remember Me */
+.field input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Button Styling */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions input {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions input:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+.login-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.login-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+.password-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.password-container h2 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.field label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.field em {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Button Styling */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions input {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions input:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+.password-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.password-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+}
+
+.password-links a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.forgot-password-container h2 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.field label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Button Styling */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions input {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions input:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+.forgot-password-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.forgot-password-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+}
+
+.forgot-password-links a:hover {
+    text-decoration: underline;
+}
+

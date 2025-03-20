@@ -1,7 +1,17 @@
-<%=flash[:notice]%>
-<h1>all users</h1>
- 
-<%@users.each do |user|%>
-<%=link_to user.first_name, assign_user_path(@task,user)%>
 
-<%end%>
+
+<% if flash[:notice] %>
+  <p class="flash-message"><%= flash[:notice] %></p>
+<% end %>
+
+<div class="all-users-container">
+  <h1>All Users</h1>
+
+  <ul class="user-list">
+    <% @users.each do |user| %>
+      <li class="user-item">
+        <%= link_to user.first_name, assign_user_path(@task, user) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

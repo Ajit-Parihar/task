@@ -1,0 +1,14 @@
+
+<div class="assigned-tasks-container">
+  <h1>Assigned Tasks</h1>
+
+  <ul class="task-list">
+    <% @tasks.each do |task| %>
+      <% if task.user_id.present? %>
+        <li class="task-item">
+          <%= link_to task.title, taskinfo_path(task) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

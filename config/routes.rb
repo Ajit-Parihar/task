@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
-  get "admin/index", as: 'admin_index'
-  get "admin/new"
-  get "admin/edit"
-  get "admin/destroy"
-  devise_for :admins
+
 
   devise_for :users, controllers: {
     sessions: "users/sessions"
   }
 
-  resources :tasks
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -24,19 +20,24 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
   resources :taskinfos
-  resources :admins
 
+  devise_for :admins
 
   get '/all/users/:id', to: 'users#showuser', as: 'show_user'
   get "user/:task_id/assign/:user_id", to: "users#assign", as: 'assign_user'
   get "task/details/:id", to: "users#taskdetails", as: "task_details"
-  get "assign/task/:id", to: "tasks#assigntask", as: 'assign_task'
+ 
   get "check/admin", to: "admin#checkadmin", as:"admin_check"
   post "admin/match", to: "admin#match", as: "admin_match"
   root "users#index"
-  resources :tasks do
-    member do
-      patch :start
-    end
+
+
+  namespace :admin do
+    resources :admins
+    resources :tasks
+      get "delete/task/:id", to: "tasks#destroy", as: "tasks_delete"
+      get "assign/task/:id", to: "tasks#assigntask", as: 'assign_task'
+      root to: "admins#index"
   end
+
 end

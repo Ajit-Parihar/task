@@ -1,0 +1,12 @@
+
+
+
+<div class="admin-home-container">
+  <h1>Admin Dashboard</h1>
+
+  <div class="admin-links">
+    <%= link_to "New Task", new_admin_task_path, class: "admin-link" %>
+    <%= link_to "Show Unassigned Tasks", admin_task_path(@admin), class: "admin-link" %>
+    <%= link_to "Show Assigned Tasks", admin_assign_task_path(@admin), class: "admin-link" %>
+  </div>
+</div>

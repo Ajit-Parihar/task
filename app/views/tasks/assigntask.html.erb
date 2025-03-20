@@ -1,7 +1,0 @@
-<h1>show</h1>
-<% @tasks.each do |task| %>
-<%if task.user_id.present?%>
-<%= link_to task.title, taskinfo_path(task) %>
-<br>
- <%end%>
-<%end%>

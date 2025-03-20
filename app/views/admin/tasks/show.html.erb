@@ -1,0 +1,15 @@
+
+<div class="unassigned-tasks-container">
+  <h1>Unassigned Tasks</h1>
+
+  <ul class="task-list">
+    <% @tasks.each do |task| %>
+      <% unless task.user_id.present? %>
+        <li class="task-item">
+          <%= link_to task.title, admin_task_path(task) %>
+          <%= link_to "Assign Task", show_user_path(task), class: "assign-task-button" %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

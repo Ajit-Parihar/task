@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :admin
-  has_many :task_infos
+  has_one :task_infos
 
   def start_task
     update(start_time: Time.current, end_time: Time.current + 30.minutes)

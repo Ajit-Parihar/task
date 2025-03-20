@@ -18,9 +18,30 @@
   </head>
 
   <body>
-     <%=link_to "Home", users_path%>
-        <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+   
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+      <%= link_to "Home", users_path %>
+    <% unless current_user.present? %>
+      <%= link_to "Login", new_user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_path %>  
+    <% end %>
+  
+  </div>
+
+  <!-- Flash Messages -->
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+
+  <!-- Main Content -->
+  <div class="content-container">
     <%= yield %>
+  </div>
   </body>
 </html>

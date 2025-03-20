@@ -1,5 +1,9 @@
 
-<%="left time:-"%>
-<%=@taskInfo.due_date.strftime("%Y-%m-%d")%>
 
+<div class="task-details-container">
+  <h2>Task Details</h2>
 
+  <p class="task-info">
+    <strong>Left Time:</strong> <%= @taskInfo.due_date.strftime("%Y-%m-%d") %>
+  </p>
+</div>

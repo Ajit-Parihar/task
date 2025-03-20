@@ -1,7 +1,14 @@
-<h1>show</h1>
 
-<%@tasks.each do |task|%>
-<%=link_to task.title, task_details_path(task)%>
-<br>
-<%end%>
+
+<div class="tasks-container">
+  <h1>Assigned Tasks</h1>
+
+  <ul class="task-list">
+    <% @tasks.each do |task| %>
+      <li class="task-item">
+        <%= link_to task.title, task_details_path(task) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
